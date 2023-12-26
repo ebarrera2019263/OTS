@@ -1,0 +1,76 @@
+
+<div class="flex">
+  
+    <div class="w-1/2 p-4">
+    <!-- Contenido del div -->
+    <div class="bg-white py-16 sm:py-24 lg:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="max-w-2xl text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 class="inline sm:block"></h2>
+          <p class="inline sm:block">Ingresa el número de teléfono.</p>
+        </div>
+        <form (ngSubmit)="onSubmit()" class="mt-10 max-w-md">
+          <div class="flex gap-x-4">
+            <label for="email-address" class="sr-only">Email address</label>
+            <input  input type="text" [(ngModel)]="phoneNumber" name="phoneNumber"
+            id="phone"
+            name="phone"
+            type="text"
+            autocomplete="phone"
+            required
+            [(ngModel)]="phoneNumber"
+            class="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="Ingrese el número de teléfono"
+          >
+          
+          <button
+            type="button"  type="submit"
+            class="flex-none rounded-md bg-blue-800 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+           
+          >
+            Buscar
+          </button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div *ngIf="responseData">
+  <div class="notifications-container">
+    <div class="card-container" *ngFor="let data of responseData.body">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="succes-svg">
+            <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+          </svg>
+        </div>
+        <div class="success-prompt-wrap">
+          <p class="success-prompt-heading">{{ data.Nombre }} {{ data.Apellido }}</p>
+          <div class="success-prompt-prompt">
+            <p><strong>Dirección: </strong> {{ data.Direccion }}</p>
+            <p><strong>NIT: </strong> {{ data.Nit }}</p>
+            <p><strong>Correo: </strong> {{ data.email }}</p>
+            <p><strong>Atiende: </strong> {{ data.Tienda }}</p>
+          </div>
+          <div class="success-button-container">
+            <button (click)="addToClient(data)" class="success-button-main" type="button">
+              ir
+            </button>
+            <button class="success-button-secondary" type="button">
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  
+
+ 

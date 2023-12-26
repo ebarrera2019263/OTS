@@ -1,0 +1,778 @@
+{
+  "post": [
+    {
+      "id": "1",
+      "name": "Dos de Tres",
+      "img": "https://ds1e83w8pn0gs.cloudfront.net/fotosmultisite/1407-1.jpg",
+      "description": "1/2 sandwich, 1/2 ensalada o 1 sopa más refresco San Martín.",
+      "price": "64.00"
+    },
+    {
+      "id": "1",
+      "name": "Lunch Hamburgesa",
+      "img": "https://ds1e83w8pn0gs.cloudfront.net/fotosmultisite/999239-1.jpg",
+      "description": "Escoge una hamburguesa + Media ensalada o una sopa + refresco San Martín.",
+      "price": "87.00"
+    },
+    {
+      "id": "1",
+      "name": "Lunch Pasta",
+      "img": "https://ds1e83w8pn0gs.cloudfront.net/fotosmultisite/5920-1.jpg",
+      "description": "Pasta tamaño lunch más 1/2 ensalada y refresco San Martín.",
+      "price": "74.00"
+    }
+  ],
+  "data": [
+    {
+      "relevance": 2000,
+      "product_sku": "1407",
+      "subcategory_sku": [
+        "combos"
+      ]
+    }
+  ],
+  "images": [
+    {
+      "img_desktop": "https://ds1e83w8pn0gs.cloudfront.net/fotosmultisite/1407-1.jpg",
+      "img_list": "https://ds1e83w8pn0gs.cloudfront.net/fotosmultisite/1407-1.jpg",
+      "img_mobile": "https://ds1e83w8pn0gs.cloudfront.net/fotosmultisite/1407-1.jpg"
+    }
+  ],
+  "contents": [
+    {
+      "name_es": "Dos de Tres",
+      "name_en": null,
+      "excerpt_es": "1/2 sandwich, 1/2 ensalada o 1 sopa más refresco San Martín.",
+      "excerpt_en": null,
+      "description_es": "1/2 sandwich, 1/2 ensalada o 1 sopa más refresco San Martín.",
+      "description_en": null,
+      "img": "https://ds1e83w8pn0gs.cloudfront.net/fotosmultisite/1407-1.jpg"
+    }
+  ],
+  "parameters": [
+    {
+      "available": true,
+      "purchasable": true,
+      "featured": false,
+      "txt_btn": "Comprar",
+      "txt_banner": "Compra tu Dos de tres",
+      "max_quantity": "500",
+      "quantity": "1000",
+      "hora_inicio": "12:00",
+      "hora_fin": "21:00",
+      "purchasable_delivery": true,
+      "purchasable_pickup": true,
+      "stock_status": "instock",
+      "precio_aloha": true,
+      "free_shipping": true,
+      "diasblock": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "contries": [
+        "GT"
+      ],
+      "date_ini": "2020-01-01",
+      "date_end": "2027-12-31"
+    }
+  ],
+  "prices": [
+    {
+      "price": "64.00",
+      "tax": 0,
+      "country": "GT"
+    }
+  ],
+  "presentations1": [
+    {
+      "name": "Sopas",
+      "sku": "19690",
+      "is_default": false,
+      "country": "gt",
+      "obligatorio": "1",
+      "qty_mod": "1",
+      "layout": "modo_radio"
+    }
+  ],
+  "presentationSopas": [
+    {
+      "name": "Caldo de Pollo",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/3641-1.jpg",
+      "sku": "3641",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "1",
+      "extras": []
+    },
+    {
+      "name": "Sopa de Frijol al albañil",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/1737-1.jpg",
+      "sku": "1737",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    },
+    {
+      "name": "Sopa de Tortilla",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/1928-1.jpg",
+      "sku": "1928",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    },
+    {
+      "name": "Crema de Papa al Horno",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/845-1.jpg",
+      "sku": "845",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    }
+  ],
+  "presentations2": [
+    {
+      "name": "Ensaladas",
+      "sku": "19692",
+      "is_default": false,
+      "country": "gt",
+      "obligatorio": "1",
+      "qty_mod": "1",
+      "layout": "modo_radio"
+    }
+  ],
+  "presentation": [
+    {
+      "name": "Ensalada de Aguacate y Pepitoria Media",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/2617-1.jpg",
+      "sku": "2617",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "1",
+      "extras": [
+        {
+          "sku": "12431",
+          "name": "Aderezo",
+          "cantidad_mod": "0",
+          "layout": null,
+          "extra": [
+            {
+              "sku": "997079",
+              "name": "Aderezo Pepitoria",
+              "price": "0.00",
+              "default": "1",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "999829",
+              "name": "Aderezo Chipotle",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "440100",
+              "name": "Aderezo Aguacate Chipotle",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "999978",
+              "name": "Aderezo Asiático",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "999828",
+              "name": "Aderezo Griego",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ensalada Santa Fe Media",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/4699-1.jpg",
+      "sku": "4699",
+      "Is_Default3": "0",
+      "CantidadDefault": "1",
+      "price_aloha": "1",
+      "Hidden_extra": "1",
+      "extras": [
+        {
+          "sku": "12431",
+          "name": "aderezo",
+          "cantidad_mod": "0",
+          "layout": null,
+          "extra": [
+            {
+              "sku": "997079",
+              "name": "Aderezo Pepitoria",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "440100",
+              "name": "Aderezo Aguacate Chipotle",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "999978",
+              "name": "Aderezo Asiático",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "999828",
+              "name": "Aderezo Griego",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "999829",
+              "name": "Aderezo Chipotle",
+              "price": "0.00",
+              "default": "1",
+              "price_aloha": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Media Ensalada Artisan Cobb",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/3658-1.jpg",
+      "sku": "3658",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "1",
+      "extras": [
+        {
+          "sku": "12431",
+          "name": "Aderezo",
+          "cantidad_mod": "0",
+          "layout": null,
+          "extra": [
+            {
+              "sku": "999828",
+              "name": "Aderezo Griego",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "999829",
+              "name": "Aderezo Chipotle",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "997079",
+              "name": "Aderezo Pepitoria",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "999978",
+              "name": "Aderezo Asiático",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "440100",
+              "name": "Aderezo aguacate chipotle",
+              "price": "0.00",
+              "default": "1",
+              "price_aloha": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Quinoa Salad",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/50641-.jpg",
+      "sku": "50643",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    },
+    {
+      "name": "Ensalada Griega Media",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/4696-1.jpg",
+      "sku": "4696",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "1",
+      "extras": [
+        {
+          "sku": "12431",
+          "name": "Aderezo",
+          "cantidad_mod": "0",
+          "layout": null,
+          "extra": [
+            {
+              "sku": "999828",
+              "name": "Aderezo Griego",
+              "price": "0.00",
+              "default": "1",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "997079",
+              "name": "Aderezo Pepitoria",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "999829",
+              "name": "Aderezo Chipotle",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "999978",
+              "name": "Aderezo Asiático",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "440100",
+              "name": "Aderezo Aguacate Chipotle",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presentations3": [
+    {
+      "name": "Sandwich",
+      "sku": "19691",
+      "is_default": false,
+      "country": "gt",
+      "obligatorio": "1",
+      "qty_mod": "1",
+      "layout": "modo_radio"
+    }
+  ],
+  "presentationSandwich": [
+    {
+      "name": "Pan con Arrachera Medio",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/3646-1.jpg",
+      "sku": "3646",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "1",
+      "extras": [
+        {
+          "sku": "10295",
+          "name": "Pan",
+          "cantidad_mod": "0",
+          "layout": null,
+          "extra": [
+            {
+              "sku": "800087",
+              "name": "Chapata",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "800092",
+              "name": "Egg Twist",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "800089",
+              "name": "Pan Baguette",
+              "price": "0.00",
+              "default": "1",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "800085",
+              "name": "Pan de agua doble",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sandwich la Nona Medio",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/1466-1.jpg",
+      "sku": "1466",
+      "Is_Default3": "0",
+      "CantidadDefault": "1",
+      "price_aloha": "1",
+      "Hidden_extra": "1",
+      "extras": [
+        {
+          "sku": "10295",
+          "name": "Tipo de pan",
+          "cantidad_mod": "0",
+          "layout": null,
+          "extra": [
+            {
+              "sku": "800085",
+              "name": "Pan de Agua Doble",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "800087",
+              "name": "Chapata",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "800092",
+              "name": "Egg Twist",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "800089",
+              "name": "Pan Baguette",
+              "price": "0.00",
+              "default": "1",
+              "price_aloha": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sandwich Montecristo Medio",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/4328-1.jpg",
+      "sku": "4328",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "1",
+      "extras": [
+        {
+          "sku": "10295",
+          "name": "Tipo de pan",
+          "cantidad_mod": "0",
+          "layout": null,
+          "extra": [
+            {
+              "sku": "800089",
+              "name": "Baguette Medio",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "800094",
+              "name": "Sourdough",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "800087",
+              "name": "Pan Chapata",
+              "price": "0.00",
+              "default": "1",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "800085",
+              "name": "Pan de Agua doble",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pan con Pollo y Aguacate Medio",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/3642-1.jpg",
+      "sku": "3642",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "1",
+      "extras": [
+        {
+          "sku": "10295",
+          "name": "Tipo de pan",
+          "cantidad_mod": "0",
+          "layout": null,
+          "extra": [
+            {
+              "sku": "800087",
+              "name": "Chapata",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "800092",
+              "name": "Egg Twist",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "800089",
+              "name": "Pan Baguette",
+              "price": "0.00",
+              "default": "1",
+              "price_aloha": "1"
+            },
+            {
+              "sku": "800085",
+              "name": "Pan de Agua doble",
+              "price": "0.00",
+              "default": "0",
+              "price_aloha": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Turkey Bistro",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/5367-.jpg",
+      "sku": "50681",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": [
+        {
+          "sku": "10295",
+          "name": "Tipo de Pan",
+          "cantidad_mod": "0",
+          "layout": null,
+          "extra": [
+            {
+              "sku": "800087",
+              "name": "Pan Chapata",
+              "price": "0.00",
+              "default": "1",
+              "price_aloha": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pan Chapata con Queso Panela Asado",
+      "price": "0.00",
+      "img": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/50674-.jpg",
+      "sku": "50675",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": [
+        {
+          "sku": "10295",
+          "name": "Tipo de Pan",
+          "cantidad_mod": "0",
+          "layout": null,
+          "extra": [
+            {
+              "sku": "800087",
+              "name": "Pan Chapata",
+              "price": "0.00",
+              "default": "1",
+              "price_aloha": "1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presentations4": [
+    {
+      "name": "Bebidas",
+      "sku": "19693",
+      "is_default": false,
+      "country": "gt",
+      "obligatorio": "0",
+      "qty_mod": "1",
+      "layout": "modo_radio"
+    }
+  ],
+  "presentationBebidas": [
+    {
+      "name1": "Horchata 12 Oz",
+      "price1": "0.00",
+      "img1": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/1355-1.jpg",
+      "sku": "1355",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    },
+    {
+      "name1": "Rosa Jamaica 12 Oz",
+      "price1": "0.00",
+      "img1": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/1523-1.jpg",
+      "sku": "1523",
+      "Is_Default3": "0",
+      "CantidadDefault": "1",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    },
+    {
+      "name1": "Te Frio 12 Oz",
+      "price": "0.00",
+      "img1": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/1266-1.jpg",
+      "sku": "1266",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    },
+    {
+      "name1": "Rosa Jamaica Grande",
+      "price": "5.00",
+      "img1": "https://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/862-.jpg",
+      "sku": "862",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    },
+    {
+      "name1": "Horchata Grande",
+      "price": "5.00",
+      "img1": "https://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/841-.jpg",
+      "sku": "841",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    },
+    {
+      "name1": "Te Frio Grande",
+      "price": "5.00",
+      "img1": "https://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/843-.jpg",
+      "sku": "843",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    },
+    {
+      "name1": "Pepsi",
+      "price": "3.00",
+      "img1": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/300-.jpg",
+      "sku": "300",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    },
+    {
+      "name1": "Coca Cola Cero",
+      "price": "3.00",
+      "img1": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/17391-.jpg",
+      "sku": "17391",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    },
+    {
+      "name1": "Coca Cola",
+      "price": "3.00",
+      "img1": "http://ds1e83w8pn0gs.cloudfront.net/fotoswhatsapp/17387-.jpg",
+      "sku": "17387",
+      "Is_Default3": "0",
+      "CantidadDefault": "0",
+      "price_aloha": "1",
+      "Hidden_extra": "0",
+      "extras": []
+    }
+  ],
+  "items": [
+    {
+      "name": "Dos de tres",
+      "sopas": "Sopa de Frijol al albañil",
+      "sandwich": "Sandwich la Nona Medio",
+      "pan": "Chapata",
+      "ensalada": "Quinoa Salad",
+      "aderesos": "Aderezo Pepitoria",
+      "description": "1/2 sandwich, 1/2 ensalada o 1 sopa más refresco San Martín.",
+      "img": "https://ds1e83w8pn0gs.cloudfront.net/fotosmultisite/1407-1.jpg",
+      "price": 64,
+      "subtotal": 64,
+      "id": 1
+    }
+  ]
+}
