@@ -3,7 +3,7 @@ export interface Product {
     id: number;
     post_title: string;
     sku: string;
-    price: string;
+    price: number;
     available: number;
     time_init: string;
     time_end: string;

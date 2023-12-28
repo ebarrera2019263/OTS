@@ -34,7 +34,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data: any) => {
       this.products = data.body; 
-      console.log(data);// Asigna el array de productos
+      // Asigna el array de productos
     });
   }
   
