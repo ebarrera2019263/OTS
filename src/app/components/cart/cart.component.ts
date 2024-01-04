@@ -9,10 +9,12 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  
   myCart$ = this.productService.myCart$;
   subtotal: number = 0;
   myList: any[] = []; // Ajusta el tipo según la estructura real de tus datos
   myList1: any[] = [];
+  
 
   constructor(public productService: ApiService, private router: Router) {}
 
@@ -22,6 +24,7 @@ export class CartComponent implements OnInit {
 
   irComponent() {
     this.router.navigate(['/checkout']);
+   
   }
 
   returnCart() {
@@ -50,8 +53,8 @@ export class CartComponent implements OnInit {
 
 
   checkout() {
-    // Llama al método submitOrder cuando el usuario confirma la compra
-    this.productService.submitOrder();
+    
+    this.productService.sendOrderData();
   }
 
   

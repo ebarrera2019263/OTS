@@ -6,6 +6,8 @@ import { AddressComponent } from './components/address/address.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SecureComponent } from './components/secure/secure.component';
+import { AddAddressComponent } from './components/add-address/add-address.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 
@@ -17,6 +19,9 @@ const routes: Routes = [
   {path:'checkout', component: CheckoutComponent},
   { path: 'products', component: ProductsComponent },
   {path: 'secure', component: SecureComponent},
+  {path: 'add', component: AddAddressComponent},
+  {path: 'spin', component: SpinnerComponent},
+
 
 
 

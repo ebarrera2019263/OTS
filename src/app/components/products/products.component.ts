@@ -6,12 +6,19 @@ import { HeaderComponent } from '../header/header.component';
 import { ActivatedRoute } from '@angular/router';
 
 import { Product } from 'src/app/models/product.model';
+import { NgToastComponent } from 'ng-angular-popup';
+import { ToastrService } from 'ngx-toastr';
+import { NotificationService } from 'src/app/notification.service';
+import { flyInOut } from 'src/app/animations/fly-in-out.animation';
+
 
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
+  animations: [flyInOut],
+  
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
@@ -29,14 +36,21 @@ export class ProductsComponent implements OnInit {
 
   
 
-  constructor(private productService: ApiService) {}
+  constructor(private productService: ApiService, private notificationService: NotificationService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data: any) => {
       this.products = data.body; 
+      this.toastr.success('productos cargados correctamente');
       // Asigna el array de productos
     });
   }
+
+
+  showNotification() {
+    this.notificationService.showNotification();
+  }
+
   
 
 
@@ -76,8 +90,14 @@ export class ProductsComponent implements OnInit {
 
 
   addToCart(product: Product) {
-    return this.productService.addProduct(product);
+    
+   this.productService.addProduct(product);
+   this.toastr.success('producto agregado existosamente al carrito');
+    
   }
+
+  
+  
 
   onSearch() {
     // Puedes realizar acciones adicionales si es necesario al enviar el formulario de búsqueda

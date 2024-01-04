@@ -20,6 +20,13 @@ import { CategoryClickFilterPipe } from './category-click-filter.pipe';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { RouterModule } from '@angular/router';
 import { SecureComponent } from './components/secure/secure.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { AddAddressComponent } from './components/add-address/add-address.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+
 
 
 
@@ -43,6 +50,10 @@ import { SecureComponent } from './components/secure/secure.component';
     CategoryClickFilterPipe,
     PaginationComponent,
     SecureComponent,
+    NotificationComponent,
+    AddAddressComponent,
+    SpinnerComponent,
+    
   
     
     
@@ -61,6 +72,11 @@ import { SecureComponent } from './components/secure/secure.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    NoopAnimationsModule
+   
+    
     
     
     

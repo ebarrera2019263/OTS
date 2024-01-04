@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
     "password":""
   };
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient, private route: Router){
   }
   ngOnInit(): void {
     
@@ -31,7 +32,18 @@ export class LoginComponent implements OnInit {
     return this.http.post('http://127.0.0.1:8000/api/auth/login', this.dataLogin).subscribe(
       data => console.log(data),
       error => console.log(error)
+
+
+
       
     )
+
+
+  }
+
+
+  enviar(){
+    this.route.navigate(['/address']);
+
   }
 }
