@@ -1,0 +1,5 @@
+.cart-list {
+    max-height: 400px; /* Puedes ajustar la altura según tus necesidades */
+    overflow-y: auto;
+  }
+  

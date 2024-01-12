@@ -11,6 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class CartComponent implements OnInit {
   
   myCart$ = this.productService.myCart$;
+  myClient$ = this.productService.myClient$;
   subtotal: number = 0;
   myList: any[] = []; // Ajusta el tipo según la estructura real de tus datos
   myList1: any[] = [];
@@ -20,6 +21,12 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.calculateSubtotal();
+  }
+
+  onCheckoutClick() {
+    // Realizar otras acciones relacionadas con el checkout si es necesario
+   
+    this.router.navigate(['/checkout']);
   }
 
   irComponent() {
@@ -52,9 +59,13 @@ export class CartComponent implements OnInit {
   }
 
 
+  updateCart() {
+    // Implement the logic to update the cart
+  }
+
   checkout() {
-    
     this.productService.sendOrderData();
+    this.router.navigate(['/order']);
   }
 
   

@@ -22,14 +22,18 @@ import { flyInOut } from 'src/app/animations/fly-in-out.animation';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
+  public page = 0;
   filteredProducts: Product[] = [];
 
   searchTerm: string = '';
+  
+  search: string = '';
 
   selectedCategory: string = '';
 
   currentPage: number = 1;
   itemsPerPage: number = 8;
+
 
   datosCombinados: any[] = [];
  
@@ -40,12 +44,36 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data: any) => {
-      this.products = data.body; 
-      this.toastr.success('productos cargados correctamente');
+      this.products = data.body;
+  
+      setTimeout(() => {
+        this.toastr.success( 'correctamente','Productos cargados ', {
+          timeOut: 2000, // Tiempo en milisegundos
+          closeButton: true // Habilita el botón de cierre
+        });
+      }, 1000);
+  
       // Asigna el array de productos
     });
   }
+  
+  
 
+
+  nextPage() {
+    this.page += 8;
+  }
+
+  prevPage() {
+    if(this.page > 0) {
+      this.page -= 8;
+    }
+  }
+
+  onSearchProducts(search: string){
+    this.search = search;
+
+  }
 
   showNotification() {
     this.notificationService.showNotification();
@@ -76,7 +104,6 @@ export class ProductsComponent implements OnInit {
 
   
 
-
   filterByCategory(category: string) {
     this.selectedCategory = category.toLowerCase();
     console.log(category);
@@ -89,12 +116,21 @@ export class ProductsComponent implements OnInit {
   
 
 
+
   addToCart(product: Product) {
-    
-   this.productService.addProduct(product);
-   this.toastr.success('producto agregado existosamente al carrito');
-    
+    this.productService.addProduct(product);
+  
+    setTimeout(() => {
+      this.toastr.success( 'correctamente','Productos cargados ', {
+        timeOut: 2000, // Tiempo en milisegundos
+        closeButton: true // Habilita el botón de cierre
+      });
+    }, 1000);
+
+    // Asigna el array de productos
   }
+
+  
 
   
   
@@ -121,6 +157,7 @@ export class ProductsComponent implements OnInit {
   
     return filteredProducts;
   }
+
 
 
 

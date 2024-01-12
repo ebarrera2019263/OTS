@@ -13,8 +13,9 @@ import { ApiService } from 'src/app/services/api.service';
 export class CheckoutComponent implements OnInit {
   subtotal: number = 0;
 
-  
 
+  
+ 
   myClient$  = this.ApiService.myClient$
   myCart$ = this.ApiService.myCart$
 
@@ -23,6 +24,25 @@ export class CheckoutComponent implements OnInit {
      private toastr: ToastrService) { }
 
   ngOnInit(): void {
+  }
+
+
+  get mostrarBotonCheckout(): boolean {
+    return !this.ApiService.checkoutClicked;
+  }
+
+
+  realizarCheckout() {
+    // Lógica para realizar el checkout
+    // ...
+
+    // Después de realizar el checkout, puedes establecer checkoutClicked en true
+    this.ApiService.checkoutClicked = true;
+  }
+
+
+  get mostrarComentario(): boolean {
+    return this.ApiService.mostrarComentario;
   }
 
   addToCart(product: Product) {
@@ -38,8 +58,8 @@ export class CheckoutComponent implements OnInit {
 
 
   checkout() {
-    
     this.ApiService.sendOrderData();
+    this.router.navigate(['/order']);
   }
 
 

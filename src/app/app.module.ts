@@ -26,6 +26,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AddAddressComponent } from './components/add-address/add-address.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
+import { OrderCompleteComponent } from './components/order-complete/order-complete.component';
+import { FilterPipe } from './filter.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
+import { ProductsCategoriesComponent } from './component/products-categories/products-categories.component';
 
 
 
@@ -53,6 +59,11 @@ import { SpinnerComponent } from './spinner/spinner.component';
     NotificationComponent,
     AddAddressComponent,
     SpinnerComponent,
+    CartCheckoutComponent,
+    OrderCompleteComponent,
+    FilterPipe,
+    HeaderMenuComponent,
+    ProductsCategoriesComponent,
     
   
     
@@ -74,7 +85,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    NgxPaginationModule
    
     
     

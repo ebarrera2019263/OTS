@@ -15,7 +15,7 @@
 
 
     <!-- Agrega el ngModel para vincular el valor del campo de búsqueda -->
-    <form (ngSubmit)="onSearch()">
+    <form >
       <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
       <div class="relative">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -23,7 +23,7 @@
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
           </svg>
         </div>
-        <input [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}" type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="búsqueda de productos" required>
+        <input #txtSearch   (keyup)="onSearchProducts( txtSearch.value)"      type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="búsqueda de productos" required>
         
       </div>
     </form>
@@ -105,59 +105,57 @@
 
 
     <div class="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-      <ng-container *ngFor="let product of getFilteredProducts() | categoryClickFilter: selectedCategory; let i = index">
+      <ng-container *ngFor="let product of getFilteredProducts() | filter:page:search; let i = index">
         <div class="mb-8">
-          <div *ngFor="let innerProduct of getFilteredProducts().slice(i, i + 4)">
-            <div>
-              <div class="relative">
-                <div class="relative h-72 w-full overflow-hidden rounded-lg">
-                  <img [src]="innerProduct.img" alt="{{ innerProduct.post_title }}" />
-                </div>
-                <div class="relative mt-4">
-                  <p class="text-sm font-medium text-gray-900">{{ innerProduct.post_title }}<p>
-                    <p class="text-sm font-medium text-gray-900"> sku:{{ innerProduct.sku }}</p>
-                  
-                </div>
-                <div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
-                  <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
-                  <p class="relative text-lg font-semibold text-white">Q. {{ innerProduct.price }}</p>
-                </div>
-              </div>
-              <div class="mt-6"><br>
-                <a (click)="addToCart(innerProduct)" class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200">Add to bag<span class="sr-only">, Zip Tote Basket</span></a>
-
-              </div>
+          <div class="relative">
+            <div class="relative h-72 w-full overflow-hidden rounded-lg">
+              <img [src]="product.img" alt="{{ product.post_title }}" />
             </div>
+            <div class="relative mt-4">
+              <p class="text-sm font-medium text-gray-900">{{ product.post_title }}<p>
+              <p class="text-sm font-medium text-gray-900"> sku:{{ product.sku }}</p>
+              <p class="mt-4 flex space-x-2 text-sm text-gray-700">
+              </p>
+            </div>
+            <div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
+              <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
+              <p class="relative text-lg font-semibold text-white">Q. {{ product.price }}</p>
+            </div>
+          </div>
+          <div class="mt-6">
+            <ng-container *ngIf="product.stock !== 'outofstock'">
+              <a (click)="addToCart(product)" class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-blue-300">
+                Añadir al carrito
+              </a>
+            </ng-container>
+            <ng-container *ngIf="product.stock === 'outofstock'">
+                <a class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-red-500">No disponible</a>
+            </ng-container>
           </div>
         </div>
       </ng-container>
     </div>
-    <nav class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
-      <div class="-mt-px flex w-0 flex-1">
-        <a href="#" class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
-          <svg class="mr-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
-          </svg>
-          Previous
-        </a>
+
+
+
+    
+    
+
+    <nav class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6" aria-label="Pagination">
+      <div class="hidden sm:block">
+        <p class="text-sm text-gray-700">
+          Showing
+          <span class="font-medium">1</span>
+          to
+          <span class="font-medium">10</span>
+          of
+          <span class="font-medium">20</span>
+          results
+        </p>
       </div>
-      <div class="hidden md:-mt-px md:flex">
-        <a href="#" class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">1</a>
-        <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" -->
-        <a href="#" class="inline-flex items-center border-t-2 border-indigo-500 px-4 pt-4 text-sm font-medium text-indigo-600" aria-current="page">2</a>
-        <a href="#" class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">3</a>
-        <span class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500">...</span>
-        <a href="#" class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">8</a>
-        <a href="#" class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">9</a>
-        <a href="#" class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">10</a>
-      </div>
-      <div class="-mt-px flex w-0 flex-1 justify-end">
-        <a href="#" class="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
-          Next
-          <svg class="ml-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
-          </svg>
-        </a>
+      <div class="flex flex-1 justify-between sm:justify-end">
+        <a   (click)="prevPage()"   class="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">Aterior</a>
+        <a  (click)="nextPage()"    class="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">Siguiente</a>
       </div>
     </nav>
     

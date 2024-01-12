@@ -10,7 +10,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class ApiService {
   private apiUrl2 = 'http://127.0.0.1:8000/api/v1';
-  private apiUrl1 = 'http://127.0.0.1:8000/api/v1/products/1';
+  private apiUrl1 = 'http://127.0.0.1:8000/api/v1/products/13';
   private apiPHP = 'http://127.0.0.1:8000/api/v1';
   private postUrl = 'https://webtrack.sanmartinbakery.com/api/store-pedido';
 
@@ -18,6 +18,8 @@ export class ApiService {
   private myList:Address[]=[];
   private combinedData: any;
   private orderData: any = {};
+  checkoutClicked = false;
+  mostrarComentario = false;
   
 
   private myClient = new BehaviorSubject<Address[]>([]);
@@ -37,7 +39,14 @@ export class ApiService {
 
   getPhoneInfo(phoneNumber: string): Observable<any> {
     const url = `${this.apiUrl2}/phone/${phoneNumber}`;
-    return this.http.get(url);
+    return this.http.get(url).pipe(
+      catchError((error) => {
+        if (error.status === 404) {
+          console.error('El número de teléfono no existe.');
+        }
+        throw error;
+      })
+    );
   }
 
 
@@ -62,13 +71,9 @@ export class ApiService {
  
 
  
-  addClient(clientData: any) {
+  addClient(clientData: Address) {
     this.myList.push(clientData);
-    
-
-    
-    
-    
+    this.myClient.next(this.myList);
   }
 
 
@@ -141,7 +146,7 @@ export class ApiService {
         telefono: client.Numero,
         direccion: client.Direccion
       },
-      tienda_id: 1,
+      tienda_id: client.id_tienda,
       metodo_pago_id: 1,
       auth: "authorization_code",
       monto_total: detalle.reduce((sum, item) => sum + (item.cantidad * item.precio), 0),
@@ -150,11 +155,16 @@ export class ApiService {
     };
   
     // Hacer solicitud HTTP POST
+    console.log('Data a enviar:', postData);
+
     this.http.post(this.postUrl, postData).subscribe(
       response => console.log('Pedido enviado:', response),
-      error => console.error('Ocurrió un error al enviar el pedido:', error)
+      error => {
+        console.error('Ocurrió un error al enviar el pedido:', error);
+        // Puedes agregar lógica adicional para manejar el error, mostrar un mensaje al usuario, etc.
+      }
     );
-  }
+  }    
   
 
 
@@ -178,6 +188,9 @@ incrementQuantity(product: Product) {
 updateCart() {
   this.myCart.next(this.myList1);
 }
+
+
+
 
 
 

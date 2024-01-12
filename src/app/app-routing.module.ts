@@ -8,6 +8,10 @@ import { ProductsComponent } from './components/products/products.component';
 import { SecureComponent } from './components/secure/secure.component';
 import { AddAddressComponent } from './components/add-address/add-address.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
+import { OrderCompleteComponent } from './components/order-complete/order-complete.component';
+import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
+import { ProductsCategoriesComponent } from './component/products-categories/products-categories.component';
 
 
 
@@ -21,6 +25,11 @@ const routes: Routes = [
   {path: 'secure', component: SecureComponent},
   {path: 'add', component: AddAddressComponent},
   {path: 'spin', component: SpinnerComponent},
+  {path: 'cartcheckout', component: CartCheckoutComponent},
+  {path: 'order', component: OrderCompleteComponent},
+  {path: 'headermenu', component: HeaderMenuComponent},
+  {path: 'categories', component: ProductsCategoriesComponent},
+
 
 
 

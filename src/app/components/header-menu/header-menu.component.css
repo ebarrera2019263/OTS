@@ -1,0 +1,16 @@
+.with-navbar {
+
+    
+  /* Agrega es/* Solo un ejemplo, ajusta según tus necesidades */
+}
+
+.with-navbar nav {
+  /* Estilos específicos para la navegación dentro del with */
+  padding: 25px;
+}
+
+.with-navbar a {
+  /* Estilos específicos para los enlaces dentro del with */
+  color: white;
+  /* ... otros estilos ... */
+}

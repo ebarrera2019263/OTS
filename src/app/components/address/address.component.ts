@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 import { Address } from 'src/app/models/address.model';
 import { NgToastComponent } from 'ng-angular-popup';
+import { HeaderMenuComponent } from '../header-menu/header-menu.component'; 
 
 @Component({
   selector: 'app-address',
@@ -44,6 +45,11 @@ addToClient(selectedClient: Address) {
   this.router.navigate(['/products']);
 }
 
+
+createClient(){
+  
+  this.router.navigate(['/add']);
+}
 // ...
 
   

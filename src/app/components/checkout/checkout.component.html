@@ -16,19 +16,28 @@
   <main class="relative mx-auto grid max-w-7xl grid-cols-1 gap-x-16 lg:grid-cols-2 lg:px-8">
     <h1 class="sr-only">Checkout</h1>
 
-    <section aria-labelledby="summary-heading" class="bg-indigo-900 pb-12 pt-6 text-indigo-300 md:px-10 lg:col-start-2 lg:row-start-1 lg:mx-auto lg:w-full lg:max-w-lg lg:bg-transparent lg:px-0 lg:pb-24 lg:pt-0">
-      <div class="mx-auto max-w-2xl px-4 lg:max-w-none lg:px-0">
-        <h2 id="summary-heading" class="sr-only">Order summary</h2>
-      </div>
-      <div class="flex items-center justify-center"> <!-- Added container with flex styles -->
-      <app-cart></app-cart>  
-      </div>
-    </section>
+    <!-- checkout.component.html -->
+
+<section aria-labelledby="summary-heading" class="bg-indigo-900 pb-12 pt-6 text-indigo-300 md:px-10 lg:col-start-2 lg:row-start-1 lg:mx-auto lg:w-full lg:max-w-lg lg:bg-transparent lg:px-0 lg:pb-24 lg:pt-0">
+  <div class="mx-auto max-w-2xl px-4 lg:max-w-none lg:px-0">
+    <h2 id="summary-heading" class="sr-only">Order summary</h2>
+  </div>
+  <div class="flex items-center justify-center"> 
+    <app-cart-checkout></app-cart-checkout>
+  </div>
+
+  
+  <div>
+    
+    
+  </div>
+</section>
+
     
     
 
     <section aria-labelledby="payment-and-shipping-heading" class="py-16 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:w-full lg:max-w-lg lg:pb-24 lg:pt-0">
-      <h2 id="payment-and-shipping-heading" class="sr-only">Payment and shipping details</h2>
+      <h2 id="payment-and-shipping-heading" class="sr-only">pagos</h2>
 
       <form>
         <div class="mx-auto max-w-2xl px-4 lg:max-w-none lg:px-0">
@@ -39,10 +48,11 @@
               <div class="md:flex">
                 <div class="p-8"  *ngFor="let product of myClient$ | async">
                   <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Hola!</div>
-                  <p class="mt-2 text-white">Nombre:{{ product.Nombre }} </p>
-                  <p class="mt-2 text-white">Direccion: {{ product.Direccion }}</p>
-                  <p class="mt-2 text-white">Nit: {{ product.Nit }}</p>
-                  <p class="mt-2 text-white">Email: {{ product.email }}</p>
+                  <p class="mt-2 text-white">Nombre: {{ product.Nombre }} </p>
+                  <p class="mt-2 text-white">Apellido: {{ product.Apellido }} </p>
+                  <p class="mt-2 text-white">Nit: {{ product.Nit }} </p>
+                  <p class="mt-2 text-white">Direccion: {{ product.Direccion }} </p>
+                
                 </div>
                 <div class="flex items-center justify-between mt-4 space-x-4">
                   
@@ -53,25 +63,25 @@
           </div>
 
           <div class="mt-10">
-            <h3 id="payment-heading" class="text-lg font-medium text-gray-900">Payment details</h3>
+            <h3 id="payment-heading" class="text-lg font-medium text-gray-900">detalles de pago</h3>
 
             <div class="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4">
               <div class="col-span-3 sm:col-span-4">
-                <label for="card-number" class="block text-sm font-medium text-gray-700">Card number</label>
+                <label for="card-number" class="block text-sm font-medium text-gray-700">numero de tarjeta</label>
                 <div class="mt-1">
                   <input type="text" id="card-number" name="card-number" autocomplete="cc-number" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
               </div>
 
               <div class="col-span-2 sm:col-span-3">
-                <label for="expiration-date" class="block text-sm font-medium text-gray-700">Expiration date (MM/YY)</label>
+                <label for="expiration-date" class="block text-sm font-medium text-gray-700">Fecha de expiración (mm/yy)</label>
                 <div class="mt-1">
                   <input type="text" name="expiration-date" id="expiration-date" autocomplete="cc-exp" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
               </div>
 
               <div>
-                <label for="cvc" class="block text-sm font-medium text-gray-700">CVC</label>
+                <label for="cvc" class="block text-sm font-medium text-gray-700">cvc</label>
                 <div class="mt-1">
                   <input type="text" name="cvc" id="cvc" autocomplete="csc" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
@@ -79,53 +89,12 @@
             </div>
           </div>
 
-          <div class="mt-10">
-            <h3 id="shipping-heading" class="text-lg font-medium text-gray-900">Shipping address</h3>
 
-            <div class="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
-              <div class="sm:col-span-3">
-                <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
-                <div class="mt-1">
-                  <input type="text" id="address" name="address" autocomplete="street-address" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                </div>
-              </div>
 
-              <div>
-                <label for="city" class="block text-sm font-medium text-gray-700">City</label>
-                <div class="mt-1">
-                  <input type="text" id="city" name="city" autocomplete="address-level2" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                </div>
-              </div>
-
-              <div>
-                <label for="region" class="block text-sm font-medium text-gray-700">State / Province</label>
-                <div class="mt-1">
-                  <input type="text" id="region" name="region" autocomplete="address-level1" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                </div>
-              </div>
-
-              <div>
-                <label for="postal-code" class="block text-sm font-medium text-gray-700">Postal code</label>
-                <div class="mt-1">
-                  <input type="text" id="postal-code" name="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-10">
-            <h3 class="text-lg font-medium text-gray-900">Billing information</h3>
-
-            <div class="mt-6 flex items-center">
-              <input id="same-as-shipping" name="same-as-shipping" type="checkbox" checked class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-              <div class="ml-2">
-                <label for="same-as-shipping" class="text-sm font-medium text-gray-900">Same as shipping information</label>
-              </div>
-            </div>
-          </div>
+          
 
           <div class="mt-10 flex justify-end border-t border-gray-200 pt-6">
-            <button type="submit" class="rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Pay now</button>
+            <button (click)="checkout()" type="submit" class="rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">enviar pedido</button>
           </div>
         </div>
       </form>

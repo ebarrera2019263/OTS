@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeaderMenuComponent } from '../header-menu/header-menu.component';
 
 @Component({
   selector: 'app-login',
@@ -42,8 +43,9 @@ export class LoginComponent implements OnInit {
   }
 
 
-  enviar(){
-    this.route.navigate(['/address']);
-
+  enviar() {
+    setTimeout(() => {
+      this.route.navigate(['/address']);
+    }, 3000);
   }
 }
