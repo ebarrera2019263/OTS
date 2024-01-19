@@ -32,6 +32,7 @@ import { FilterPipe } from './filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
 import { ProductsCategoriesComponent } from './component/products-categories/products-categories.component';
+import { DetailProductsComponent } from './components/detail-products/detail-products.component';
 
 
 
@@ -64,6 +65,7 @@ import { ProductsCategoriesComponent } from './component/products-categories/pro
     FilterPipe,
     HeaderMenuComponent,
     ProductsCategoriesComponent,
+    DetailProductsComponent,
     
   
     

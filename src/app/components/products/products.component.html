@@ -1,171 +1,476 @@
-<app-header></app-header>
-<div class="bg-white">
-  <div class="relative overflow-hidden bg-gray-900 py-12 sm:py-16">
-    <img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?q=80&w=1769&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" class="absolute inset-0 w-full h-full object-cover">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl lg:mx-0">
-            <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl"></h2>
-            <p class="mt-6 text-lg leading-8 text-gray-300"></p>
-        </div>
-    </div>
-</div>
-  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-    
-    
 
 
-    <!-- Agrega el ngModel para vincular el valor del campo de búsqueda -->
-    <form >
-      <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-      <div class="relative">
-        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-          </svg>
-        </div>
-        <input #txtSearch   (keyup)="onSearchProducts( txtSearch.value)"      type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="búsqueda de productos" required>
-        
+
+
+
+
+<div>
+  <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+    <nav class="bg-white shadow-lg h-screen fixed top-0 left-0 min-w-[240px] py-6 px-4 font-[sans-serif] overflow-auto">
+      <ul>
+        <li>
+          <a href="javascript:void(0)"
+            class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Categorias
+          </a>
+        </li>
+      </ul>
+      <div class="mt-4">
+        <h6 class="text-blue-600 text-sm font-bold px-4">Panderia</h6>
+        <ul class="mt-2">
+          <li>
+            <a (click)="filterByCategory('galletas')"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Galletas
+            </a>
+          </li>
+          <li>
+            <a (click)="filterByCategory('gluten')"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Gluten Free
+            </a>
+          </li>
+          <li>
+            <a (click)="filterByCategory('tradicional')"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Pan
+            </a>
+          </li>
+          <li>
+            <a  (click)="filterByCategory('listo-para-hornear')"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Pan Congelado
+            </a>
+          </li>
+          <li>
+            <a (click)="filterByCategory('reposteria')"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Reposteria
+            </a>
+          </li>
+          <li>
+            <a (click)="filterByCategory('tostaditos')"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Tostaditos
+            </a>
+          </li>
+        </ul>
       </div>
-    </form>
-    
-    
-    
-
-  
-
-
-    <div class="badge-container"><br>
-      <span (click)="filterByCategory('pasteles')" class="inline-flex items-center gap-x-1.5 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
-        <svg class="h-1.5 w-1.5 fill-gray-400" viewBox="0 0 6 6" aria-hidden="true">
-          <circle cx="3" cy="3" r="3" />
-        </svg>
-        Pasteleria
-      </span>
-      <span (click)="filterByCategory('congelados')" class="inline-flex items-center gap-x-1.5 rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
-        <svg class="h-1.5 w-1.5 fill-red-500" viewBox="0 0 6 6" aria-hidden="true">
-          <circle cx="3" cy="3" r="3" />
-        </svg>
-        Congelados
-      </span>
-      <span (click)="filterByCategory('regalos')" class="inline-flex items-center gap-x-1.5 rounded-md bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">
-        <svg class="h-1.5 w-1.5 fill-yellow-500" viewBox="0 0 6 6" aria-hidden="true">
-          <circle cx="3" cy="3" r="3" />
-        </svg>
-        Regalos
-      </span>
-      <span (click)="filterByCategory('combos')"class="inline-flex items-center gap-x-1.5 rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700">
-        <svg class="h-1.5 w-1.5 fill-green-500" viewBox="0 0 6 6" aria-hidden="true">
-          <circle cx="3" cy="3" r="3" />
-        </svg>
-        Combos
-      </span>
-      <span (click)="filterByCategory('sandwiches')"class="inline-flex items-center gap-x-1.5 rounded-md bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700">
-        <svg class="h-1.5 w-1.5 fill-blue-500" viewBox="0 0 6 6" aria-hidden="true">
-          <circle cx="3" cy="3" r="3" />
-        </svg>
-        Sandwiches
-      </span>
-      <span (click)="filterByCategory('pizzas')" class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-100 px-2 py-1 text-xs font-medium text-indigo-700">
-        <svg class="h-1.5 w-1.5 fill-indigo-500" viewBox="0 0 6 6" aria-hidden="true">
-          <circle cx="3" cy="3" r="3" />
-        </svg>
-        Pizzas
-      </span>
-      <span (click)="filterByCategory('bebidas-frias')"class="inline-flex items-center gap-x-1.5 rounded-md bg-purple-100 px-2 py-1 text-xs font-medium text-purple-700">
-        <svg class="h-1.5 w-1.5 fill-purple-500" viewBox="0 0 6 6" aria-hidden="true">
-          <circle cx="3" cy="3" r="3" />
-        </svg>
-        Bebidas frias
-      </span>
-      <span (click)="filterByCategory('bebidas-calientes')"class="inline-flex items-center gap-x-1.5 rounded-md bg-pink-100 px-2 py-1 text-xs font-medium text-pink-700">
-        <svg class="h-1.5 w-1.5 fill-pink-500" viewBox="0 0 6 6" aria-hidden="true">
-          <circle cx="3" cy="3" r="3" />
-        </svg>
-        Bebidas calientes
-      </span>
-      <span (click)="filterByCategory('sopas')"  class="inline-flex items-center gap-x-1.5 rounded-md bg-green-300 px-2 py-1 text-xs font-medium text-green-900">
-        <svg class="h-1.5 w-1.5 fill-green" viewBox="0 0 6 6" aria-hidden="true">
-          <circle cx="3" cy="3" r="3" />
-        </svg>
-        Sopas
-      </span>
-      <span (click)="filterByCategory('hamburguesas')"  class="inline-flex items-center gap-x-1.5 rounded-md bg-pink-100 px-2 py-1 text-xs font-medium text-pink-700">
-        <svg class="h-1.5 w-1.5 fill-pink-500" viewBox="0 0 6 6" aria-hidden="true">
-          <circle cx="3" cy="3" r="3" />
-        </svg>
-        Hambuergesas
-      </span>
-      <span *ngIf="selectedCategory !== ''" (click)="clearCategoryFilter()" class="inline-flex items-center gap-x-1.5 rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700 cursor-pointer">
-        <svg class="h-1.5 w-1.5 fill-red-500" viewBox="0 0 6 6" aria-hidden="true">
-          <circle cx="3" cy="3" r="3" />
-        </svg>
-        Limpiar Categoría
-      </span>
-    </div>
-
-
-    <div class="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-      <ng-container *ngFor="let product of getFilteredProducts() | filter:page:search; let i = index">
-        <div class="mb-8">
-          <div class="relative">
-            <div class="relative h-72 w-full overflow-hidden rounded-lg">
-              <img [src]="product.img" alt="{{ product.post_title }}" />
-            </div>
-            <div class="relative mt-4">
-              <p class="text-sm font-medium text-gray-900">{{ product.post_title }}<p>
-              <p class="text-sm font-medium text-gray-900"> sku:{{ product.sku }}</p>
-              <p class="mt-4 flex space-x-2 text-sm text-gray-700">
-              </p>
-            </div>
-            <div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
-              <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
-              <p class="relative text-lg font-semibold text-white">Q. {{ product.price }}</p>
-            </div>
-          </div>
-          <div class="mt-6">
-            <ng-container *ngIf="product.stock !== 'outofstock'">
-              <a (click)="addToCart(product)" class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-blue-300">
-                Añadir al carrito
-              </a>
-            </ng-container>
-            <ng-container *ngIf="product.stock === 'outofstock'">
-                <a class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-red-500">No disponible</a>
-            </ng-container>
-          </div>
-        </div>
-      </ng-container>
-    </div>
-
-
-
-    
-    
-
-    <nav class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6" aria-label="Pagination">
-      <div class="hidden sm:block">
-        <p class="text-sm text-gray-700">
-          Showing
-          <span class="font-medium">1</span>
-          to
-          <span class="font-medium">10</span>
-          of
-          <span class="font-medium">20</span>
-          results
-        </p>
+      <div class="mt-4">
+        <h6 class="text-blue-600 text-sm font-bold px-4">Restaurante</h6>
+        <ul class="mt-2">
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Almuerzos y cenas
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Bebidas Restaurante
+            </a>
+          </li>
+          <li>
+            <a (click)="filterByCategory('desayunos-esp')"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Desayunos
+            </a>
+          </li>
+          <li>
+            <a (click)="filterByCategory('postres')"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Postres
+            </a>
+          </li>
+          <li>
+            <a (click)="filterByCategory('almuer-cena-sm-kids')"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              SM Kids
+            </a>
+          </li>
+        </ul>
       </div>
-      <div class="flex flex-1 justify-between sm:justify-end">
-        <a   (click)="prevPage()"   class="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">Aterior</a>
-        <a  (click)="nextPage()"    class="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">Siguiente</a>
+      <div class="mt-4">
+        <h6 class="text-blue-600 text-sm font-bold px-4">Pastelería</h6>
+        <ul class="mt-2">
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Velitas y tarjetitas
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Roscas y Trenzas
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Pasteles y Porciones
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Pies
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="mt-4">
+        <h6 class="text-blue-600 text-sm font-bold px-4">Market</h6>
+        <ul class="mt-2">
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Jugos y Bebidas
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Café Empacado
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Combos
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Congelados
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Despensa
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Regalos
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="mt-4">
+        <h6 class="text-blue-600 text-sm font-bold px-4">Combos Familiares</h6>
+        <ul class="mt-2">
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Almuerzos
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Desayunos
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Pastelería
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Repostería
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+              class="text-black hover:text-blue-600 text-[15px] block hover:bg-blue-50 rounded px-4 py-2.5 transition-all">
+              Promociones
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
-    
-    
-   
+
+
+  </div>
+
+  <div class="sticky top-0 z-40 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
+    <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
+      <span class="sr-only">Open sidebar</span>
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+    <div class="flex-1 text-sm font-semibold leading-6 text-gray-900">Dashboard</div>
+    <a href="#">
+      <span class="sr-only">Your profile</span>
+      <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+    </a>
+  </div>
+
+
+  <div *ngIf="isNotificationVisible" class="notification-container top-0 right-0 mt-4 mr-4 absolute z-50">
+  <!-- Copia el código de la notificación de Tailwind aquí -->
+  <!-- Global notification live region, render this permanently at the end of the document -->
+<div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
+  <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
+    <!--
+      Notification panel, dynamically insert this into the live region when it needs to be displayed
+
+      Entering: "transform ease-out duration-300 transition"
+        From: "translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
+        To: "translate-y-0 opacity-100 sm:translate-x-0"
+      Leaving: "transition ease-in duration-100"
+        From: "opacity-100"
+        To: "opacity-0"
+    -->
+    <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+      <div class="p-4">
+        <div class="flex items-start">
+          <div class="flex-shrink-0">
+            <svg class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="ml-3 w-0 flex-1 pt-0.5">
+            <p class="text-sm font-medium text-gray-900">Solicitud exitosa</p>
+            <p class="mt-1 text-sm text-gray-500">"Se han cargado los productos correctamente."</p>
+          </div>
+          <div class="ml-4 flex flex-shrink-0">
+            <button (click)="closeNotification()" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <span   class="sr-only">Close</span>
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
+</div>
+
+  <main class="py-10 lg:pl-72">
+    <div class="px-4 sm:px-6 lg:px-8">
+      <div className="flex-start flex h-2.5 w-full overflow-hidden rounded-full bg-blue-gray-50 font-sans text-xs font-medium">
+        <div className="flex h-full w-1/2 items-center justify-center overflow-hidden break-all rounded-full bg-gray-900 text-white"></div>
+      </div>
+
+      <app-header></app-header>
+      <div class="bg-white">
+        <div class="relative overflow-hidden bg-gray-900 py-12 sm:py-16">
+          <img src="../../../assets/banner.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
+          <div class="mx-auto max-w-7xl px-6 lg:px-8">
+              <div class="mx-auto max-w-2xl lg:mx-0">
+                  <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl"></h2>
+                  <p class="mt-6 text-lg leading-8 text-gray-300"></p>
+              </div>
+          </div>
+      </div>
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+
+
+
+
+          <!-- Agrega el ngModel para vincular el valor del campo de búsqueda -->
+          <form >
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                </svg>
+              </div>
+              <input #txtSearch   (keyup)="onSearchProducts( txtSearch.value)"      type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="búsqueda de productos" required>
+
+            </div>
+          </form>
 
 
 
 
 
+
+
+          <div class="badge-container"><br>
+            <span (click)="filterByCategory('pasteles')" class="inline-flex items-center gap-x-1.5 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
+              <svg class="h-1.5 w-1.5 fill-gray-400" viewBox="0 0 6 6" aria-hidden="true">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+              Pasteleria
+            </span>
+            <span (click)="filterByCategory('congelados')" class="inline-flex items-center gap-x-1.5 rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
+              <svg class="h-1.5 w-1.5 fill-red-500" viewBox="0 0 6 6" aria-hidden="true">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+              Congelados
+            </span>
+            <span (click)="filterByCategory('regalos')" class="inline-flex items-center gap-x-1.5 rounded-md bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">
+              <svg class="h-1.5 w-1.5 fill-yellow-500" viewBox="0 0 6 6" aria-hidden="true">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+              Regalos
+            </span>
+            <span (click)="filterByCategory('combos')"class="inline-flex items-center gap-x-1.5 rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700">
+              <svg class="h-1.5 w-1.5 fill-green-500" viewBox="0 0 6 6" aria-hidden="true">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+              Combos
+            </span>
+            <span (click)="filterByCategory('sandwiches')"class="inline-flex items-center gap-x-1.5 rounded-md bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700">
+              <svg class="h-1.5 w-1.5 fill-blue-500" viewBox="0 0 6 6" aria-hidden="true">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+              Sandwiches
+            </span>
+            <span (click)="filterByCategory('pizzas')" class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-100 px-2 py-1 text-xs font-medium text-indigo-700">
+              <svg class="h-1.5 w-1.5 fill-indigo-500" viewBox="0 0 6 6" aria-hidden="true">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+              Pizzas
+            </span>
+            <span (click)="filterByCategory('bebidas-frias')"class="inline-flex items-center gap-x-1.5 rounded-md bg-purple-100 px-2 py-1 text-xs font-medium text-purple-700">
+              <svg class="h-1.5 w-1.5 fill-purple-500" viewBox="0 0 6 6" aria-hidden="true">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+              Bebidas frias
+            </span>
+            <span (click)="filterByCategory('bebidas-calientes')"class="inline-flex items-center gap-x-1.5 rounded-md bg-pink-100 px-2 py-1 text-xs font-medium text-pink-700">
+              <svg class="h-1.5 w-1.5 fill-pink-500" viewBox="0 0 6 6" aria-hidden="true">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+              Bebidas calientes
+            </span>
+            <span (click)="filterByCategory('sopas')"  class="inline-flex items-center gap-x-1.5 rounded-md bg-green-300 px-2 py-1 text-xs font-medium text-green-900">
+              <svg class="h-1.5 w-1.5 fill-green" viewBox="0 0 6 6" aria-hidden="true">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+              Sopas
+            </span>
+            <span (click)="filterByCategory('hamburguesas')"  class="inline-flex items-center gap-x-1.5 rounded-md bg-pink-100 px-2 py-1 text-xs font-medium text-pink-700">
+              <svg class="h-1.5 w-1.5 fill-pink-500" viewBox="0 0 6 6" aria-hidden="true">
+                <circle cx="3" cy="3" r="3" />
+              </svg>
+              Hambuergesas
+            </span>
+
+            <span class="inline-flex items-center gap-x-0.5 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
+              Limpiar Categoría
+              <button *ngIf="selectedCategory !== ''" (click)="clearCategoryFilter()" type="button" class="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-gray-500/20">
+                <span class="sr-only">Limpiar Categoría</span>
+                <svg viewBox="0 0 14 14" class="h-3.5 w-3.5 stroke-gray-700/50 group-hover:stroke-gray-700/75">
+                  <path d="M4 4l6 6m0-6l-6 6" />
+                </svg>
+                <span class="absolute -inset-1"></span>
+              </button>
+            </span>
+          </div>
+
+          <div style="margin-bottom: 20px;"></div>
+
+
+<div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-2 xl:p-5">
+  <ng-container *ngFor="let product of getFilteredProducts() | filter:page:search; let i = index">
+    <div class="relative bg-white border rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transform transition duration-500 hover:scale-105">
+      <!-- Agregar el ícono de stock si está fuera de stock -->
+      <div class="p-2 flex justify-center">
+        <a>
+          <img   class="rounded-md" [src]="product.img" alt="{{ product.post_title }}" loading="lazy">
+        </a>
+      </div>
+
+      <div class="px-4 pb-3">
+        <div>
+          <a *ngIf="product.stock !== 'outofstock'" (click)="addToCart(product)">
+            <h5 class="font-semibold tracking-tight hover:text-violet-800 dark:hover:text-violet-300 text-gray-900 dark:text-white text-sm">
+              {{ product.post_title }}
+            </h5>
+          </a>
+          <a *ngIf="product.stock === 'outofstock'">
+            <h5 class="font-semibold tracking-tight text-red-500 text-sm">
+              {{ product.post_title }}
+            </h5>
+          </a>
+          <div class="group flex justify-center">
+            <div class="absolute opacity-0 group-hover:opacity-100 group-hover:-translate-y-7 duration-700 text-sm bg-gray-800 text-white rounded-md p-2 mt-2">
+              {{ product.stock === 'outofstock' ? 'Sin stock' : 'Con stock' }}
+            </div>
+          </div>
+        </div>
+
+
+        <!-- products.component.html -->
+      <!-- Ejemplo en tu componente de productos -->
+
+
+
+
+
+
+
+      </div>
+
+      <div class="mt-6 relative flex justify-center items-center">
+        <!-- Agregar contenido adicional aquí -->
+      </div>
+    </div>
+
+
+
+
+
+
+  </ng-container>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <nav class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6" aria-label="Pagination">
+            <div class="hidden sm:block">
+              <p class="text-sm text-gray-700">
+                Showing
+                <span class="font-medium">1</span>
+                to
+                <span class="font-medium">10</span>
+                of
+                <span class="font-medium">20</span>
+                results
+              </p>
+            </div>
+            <div class="flex flex-1 justify-between sm:justify-end">
+              <a   (click)="prevPage()"   class="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">Aterior</a>
+              <a  (click)="nextPage()"    class="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">Siguiente</a>
+            </div>
+          </nav>
+
+
+
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

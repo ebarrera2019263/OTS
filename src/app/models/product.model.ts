@@ -1,6 +1,7 @@
 // product.model.ts
 export interface Product {
-    id: number;
+  id_tienda: string;
+  id: string;
     post_title: string;
     sku: string;
     price: number;
@@ -12,8 +13,8 @@ export interface Product {
     stock: string;
     img: string;
     categories: string;
+
     created_at: string;
     updated_at: string;
     cantidad: number;
   }
-  

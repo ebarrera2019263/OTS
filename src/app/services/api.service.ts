@@ -10,9 +10,10 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class ApiService {
   private apiUrl2 = 'http://127.0.0.1:8000/api/v1';
-  private apiUrl1 = 'http://127.0.0.1:8000/api/v1/products/13';
+  private apiUrl1 = 'http://127.0.0.1:8000/api/v1/products/';
   private apiPHP = 'http://127.0.0.1:8000/api/v1';
   private postUrl = 'https://webtrack.sanmartinbakery.com/api/store-pedido';
+  private apiUrl = 'http://192.168.111.13:3001/api/v1/product/28/86960';
 
 
   private myList:Address[]=[];
@@ -20,7 +21,8 @@ export class ApiService {
   private orderData: any = {};
   checkoutClicked = false;
   mostrarComentario = false;
-  
+  private tiendaId: string = '';
+
 
   private myClient = new BehaviorSubject<Address[]>([]);
   myClient$ = this.myClient.asObservable();
@@ -30,12 +32,12 @@ export class ApiService {
   private myCart = new BehaviorSubject<Product[]>([]);
   myCart$ = this.myCart.asObservable();
 
-    
+
 
 
 
   constructor(private http: HttpClient,private router: Router) {}
-  
+
 
   getPhoneInfo(phoneNumber: string): Observable<any> {
     const url = `${this.apiUrl2}/phone/${phoneNumber}`;
@@ -50,9 +52,12 @@ export class ApiService {
   }
 
 
-  
 
- 
+
+
+
+
+
 
 
   getProductsByBlogId(url: string): Observable<any> {
@@ -60,24 +65,45 @@ export class ApiService {
   }
 
 
- 
 
 
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl1);
+
+  setTiendaId(tiendaId: string) {
+    this.tiendaId = tiendaId;
   }
 
- 
+  getProducts(): Observable<Product[]> {
+    // Use the tiendaId in the API URL
+    const url = `${this.apiUrl1}${this.tiendaId}`;
+    return this.http.get<Product[]>(url);
+  }
 
- 
+
+
+
   addClient(clientData: Address) {
     this.myList.push(clientData);
     this.myClient.next(this.myList);
   }
 
+  getProductsByTiendaId(tiendaId: string) {
+    const url = `${this.apiUrl1}${tiendaId}`;
+    this.http.get(url).subscribe(
+      (data) => {
+        console.log('Products:', data);
+        // Renderize the products by tienda
+      },
+      (error) => {
+        console.error('Error al llamar a la API:', error);
+      }
+    );
+  }
 
-  
+
+
+
+
 
   // Método para agregar datos de producto
   addProduct(product: any) {
@@ -86,7 +112,7 @@ export class ApiService {
       console.error('No hay datos del cliente. Agrega información del cliente antes de agregar productos.');
       return;
     }
-  
+
     // Verificar si hay productos en la lista
     if (this.myList1.length === 0) {
       // Si no hay productos, asignar cantidad y agregar el primer producto
@@ -95,7 +121,7 @@ export class ApiService {
     } else {
       // Si ya hay productos en la lista, buscar el producto por ID
       const productMod = this.myList1.find((element) => element.id === product.id);
-  
+
       if (productMod) {
         // Si el producto ya está en la lista, incrementar la cantidad
         productMod.cantidad += 1;
@@ -105,14 +131,35 @@ export class ApiService {
         this.myList1.push(product);
       }
     }
-  
+
     // Actualizar el carrito
     this.myCart.next(this.myList1);
-  
+
     console.log('Producto agregado al carrito:', product);
   }
-  
-  
+
+
+
+
+  // Método para eliminar un producto del carrito
+  removeProduct(product: Product) {
+    // Buscar el producto en la lista del carrito
+    const index = this.myList1.findIndex((element) => element.id === product.id);
+
+    if (index !== -1) {
+      // Si se encuentra el producto, eliminarlo de la lista
+      this.myList1.splice(index, 1);
+      console.log('Producto eliminado del carrito:', product);
+    } else {
+      console.error('El producto no se encuentra en el carrito.');
+    }
+
+    // Actualizar el carrito
+    this.myCart.next(this.myList1);
+  }
+
+
+
 
 
   sendOrderData() {
@@ -120,22 +167,26 @@ export class ApiService {
       console.error('No hay datos del cliente o del producto. Agrega esta información antes de enviar el pedido.');
       return;
     }
-  
+
     // Prepara data del cliente
     const client = this.myList[0];
-  
+
     // Prepara detalles del producto
     const detalle = this.myList1.map(product => ({
       producto: {
         nombre: product.post_title,
         sku: product.sku
-        
+
       },
       detalle_producto: "Detalle del producto",
       cantidad: product.cantidad,
       precio: product.price
     }));
-  
+
+
+
+
+
     // Crea objeto para el pedido
     const postData = {
       pedido: "SM-0000",
@@ -153,7 +204,7 @@ export class ApiService {
       observaciones: "Observaciones del pedido",
       detalle: detalle
     };
-  
+
     // Hacer solicitud HTTP POST
     console.log('Data a enviar:', postData);
 
@@ -164,15 +215,15 @@ export class ApiService {
         // Puedes agregar lógica adicional para manejar el error, mostrar un mensaje al usuario, etc.
       }
     );
-  }    
-  
+  }
 
 
 
 
 
-  
-  
+
+
+
 decrementQuantity(product: Product) {
   if (product.cantidad > 0) {
     product.cantidad--;
@@ -191,10 +242,12 @@ updateCart() {
 
 
 
+ getDetailProducts(): Observable<any> {
+    return this.http.get(this.apiUrl);
+  }
 
 
 
-  
 
 
 }

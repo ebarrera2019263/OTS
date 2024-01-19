@@ -12,6 +12,7 @@ import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.
 import { OrderCompleteComponent } from './components/order-complete/order-complete.component';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
 import { ProductsCategoriesComponent } from './component/products-categories/products-categories.component';
+import { DetailProductsComponent } from './components/detail-products/detail-products.component';
 
 
 
@@ -29,6 +30,8 @@ const routes: Routes = [
   {path: 'order', component: OrderCompleteComponent},
   {path: 'headermenu', component: HeaderMenuComponent},
   {path: 'categories', component: ProductsCategoriesComponent},
+  { path: 'detail/:id_tienda/:id', component: DetailProductsComponent },
+
 
 
 

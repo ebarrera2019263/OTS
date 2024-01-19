@@ -12,18 +12,25 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class CheckoutComponent implements OnInit {
   subtotal: number = 0;
+  showDialog = false;
 
 
-  
- 
+
+
   myClient$  = this.ApiService.myClient$
   myCart$ = this.ApiService.myCart$
 
-  constructor(private ApiService : ApiService, 
+  constructor(private ApiService : ApiService,
      private router: Router,
      private toastr: ToastrService) { }
 
   ngOnInit(): void {
+  }
+
+
+
+  mostrarDialog() {
+    this.showDialog = true;
   }
 
 
@@ -47,9 +54,13 @@ export class CheckoutComponent implements OnInit {
 
   addToCart(product: Product) {
      this.ApiService.addProduct(product);
-     
-    
+
+
   }
+
+
+
+
 
 
   returnCart(){
@@ -59,7 +70,7 @@ export class CheckoutComponent implements OnInit {
 
   checkout() {
     this.ApiService.sendOrderData();
-    this.router.navigate(['/order']);
+
   }
 
 

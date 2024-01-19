@@ -9,13 +9,15 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  
+
   myCart$ = this.productService.myCart$;
   myClient$ = this.productService.myClient$;
   subtotal: number = 0;
   myList: any[] = []; // Ajusta el tipo según la estructura real de tus datos
   myList1: any[] = [];
-  
+
+   mostrarBotonPedido: boolean = true;
+
 
   constructor(public productService: ApiService, private router: Router) {}
 
@@ -23,15 +25,20 @@ export class CartComponent implements OnInit {
     this.calculateSubtotal();
   }
 
+
+  removeFromCart(product: Product) {
+    this.productService.removeProduct(product);
+  }
+
   onCheckoutClick() {
     // Realizar otras acciones relacionadas con el checkout si es necesario
-   
+
     this.router.navigate(['/checkout']);
   }
 
   irComponent() {
     this.router.navigate(['/checkout']);
-   
+
   }
 
   returnCart() {
@@ -68,15 +75,15 @@ export class CartComponent implements OnInit {
     this.router.navigate(['/order']);
   }
 
-  
+
 
 
 
 
 }
 
-  
-  
+
+
 
 
 

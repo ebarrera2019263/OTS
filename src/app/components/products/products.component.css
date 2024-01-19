@@ -8,5 +8,30 @@
   }
 
 
- 
-  
+
+  .selected {
+    background-color: #4CAF50; /* Puedes personalizar el color de fondo según tu diseño */
+    color: white;
+}
+
+
+.notification-container {
+  position: fixed;
+  bottom: 20px; /* Ajusta esta propiedad según sea necesario */
+  right: 20px; /* Ajusta esta propiedad según sea necesario */
+  z-index: 999; /* Ajusta el índice z según sea necesario */
+}
+
+.main {
+  margin-top: 60px; /* Ajusta esta propiedad según sea necesario */
+}
+@media (max-width: 767px) {
+  .notification-container {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .main {
+    margin-top: 40px;
+  }
+}
