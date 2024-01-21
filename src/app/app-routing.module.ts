@@ -30,8 +30,7 @@ const routes: Routes = [
   {path: 'order', component: OrderCompleteComponent},
   {path: 'headermenu', component: HeaderMenuComponent},
   {path: 'categories', component: ProductsCategoriesComponent},
-  { path: 'detail/:id_tienda/:id', component: DetailProductsComponent },
-
+  { path: 'detail/:idTienda/:productId', component: DetailProductsComponent },
 
 
 

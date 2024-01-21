@@ -44,6 +44,7 @@ export class AddressComponent {
     // Pass the id_tienda to the service
     this.apiService.setTiendaId(selectedClient.id_tienda);
     this.router.navigate(['/products']);
+
   }
 
 

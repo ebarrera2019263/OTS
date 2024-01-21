@@ -60,13 +60,6 @@ export class ApiService {
 
 
 
-  getProductsByBlogId(url: string): Observable<any> {
-    return this.http.get(url);
-  }
-
-
-
-
 
 
   setTiendaId(tiendaId: string) {
@@ -120,7 +113,7 @@ export class ApiService {
       this.myList1.push(product);
     } else {
       // Si ya hay productos en la lista, buscar el producto por ID
-      const productMod = this.myList1.find((element) => element.id === product.id);
+      const productMod = this.myList1.find((element) => element.ID === product.ID);
 
       if (productMod) {
         // Si el producto ya está en la lista, incrementar la cantidad
@@ -144,7 +137,7 @@ export class ApiService {
   // Método para eliminar un producto del carrito
   removeProduct(product: Product) {
     // Buscar el producto en la lista del carrito
-    const index = this.myList1.findIndex((element) => element.id === product.id);
+    const index = this.myList1.findIndex((element) => element.ID === product.ID);
 
     if (index !== -1) {
       // Si se encuentra el producto, eliminarlo de la lista
@@ -242,9 +235,12 @@ updateCart() {
 
 
 
- getDetailProducts(): Observable<any> {
-    return this.http.get(this.apiUrl);
-  }
+getDetailProducts(idTienda: string, productId: string): Observable<any> {
+  const apiUrldata = `http://192.168.111.13:3001/api/v1/product/${idTienda}/${productId}`;
+
+  return this.http.get(apiUrldata);
+}
+
 
 
 

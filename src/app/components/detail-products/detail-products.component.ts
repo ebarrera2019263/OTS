@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetProducts } from 'src/app/models/products.model';
 import { ProductStock } from 'src/app/models/stock.model';
 import { ApiService } from 'src/app/services/api.service';
@@ -20,7 +20,7 @@ export class DetailProductsComponent {
   stock: ProductStock[] = [];
   body: Body  [] = [];
 
-  constructor(private apiservice: ApiService,  private router: Router) { }
+  constructor(private apiservice: ApiService,  private router: Router, private route: ActivatedRoute) { }
 
   public productData: any;
   public productDataImg: any;
@@ -30,7 +30,7 @@ export class DetailProductsComponent {
 
   public presentationname:any;
 
-
+  productId: string = '';
 
 
 
@@ -39,27 +39,41 @@ export class DetailProductsComponent {
 
 
   ngOnInit(): void {
-    this.apiservice.getDetailProducts().subscribe((data) => {
-      this.productData = data.body.contents.name_es;
+    // Recupera los parámetros de la URL
+    this.route.params.subscribe((params) => {
+      this.idTienda = params['idTienda'];
+      this.productId = params['productId'];
 
-      this.productDataImg = data.body.images;
-      this.Presentations = data.body.presentations;
-      this.presentationname = this.Presentations[0].name;
+      // Llama al servicio para obtener los detalles del producto
+      this.apiservice.getDetailProducts(this.idTienda, this.productId).subscribe((data) => {
+        // Hacer lo que necesites con los detalles del producto en este componente
+        console.log('ID de Tienda:', this.idTienda);
+        console.log('ID de Producto:', this.productId);
+        console.log(data);
+        this.productData = data.body.contents.name_es;
 
-      this.Price = data.body.prices;
-      this.productPrice = this.Price[0].price;
+        this.productDataImg = data.body.images;
+        this.Presentations = data.body.presentations;
+        this.presentationname = this.Presentations[0].name;
 
-      // Inicializa this.checkboxState según la cantidad de presentaciones y productos
-      this.checkboxState = Array.from({ length: this.Presentations.length }, () =>
-      Array(this.productData.length).fill(false)
-    );
+        this.Price = data.body.prices;
+        this.productPrice = this.Price[0].price;
+
+        // Inicializa this.checkboxState según la cantidad de presentaciones y productos
+        this.checkboxState = Array.from({ length: this.Presentations.length }, () =>
+        Array(this.productData.length).fill(false)
+      );
 
 
 
-    this.products = data;
-    console.log('Datos de productos obtenidos:', this.products);
-  });
-}
+      this.products = data;
+      console.log('Datos de productos obtenidos:', this.products);
+
+      });
+    });
+  }
+
+
 
 
 

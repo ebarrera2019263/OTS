@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ParamMap, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
@@ -43,8 +44,10 @@ export class ProductsComponent implements OnInit {
 
 
 
-  constructor(private productService: ApiService, private notificationService: NotificationService, private toastr: ToastrService, private router: Router,
-    private route: ActivatedRoute) {}
+  constructor(private http: HttpClient, private productService: ApiService,
+    private notificationService: NotificationService,
+     private toastr: ToastrService, private router: Router,
+    private route: ActivatedRoute,private httpClient: HttpClient ) {}
 
     ngOnInit(): void {
       // Subscribe to the getProducts method with the dynamically set tiendaId
@@ -165,6 +168,31 @@ export class ProductsComponent implements OnInit {
 
     return filteredProducts;
   }
+
+
+
+  viewDetail(product: any) {
+    const tiendaId = product.tiendaId;
+    const productId = product.id;
+
+    // Navigate to the detail product component while sending the tiendaId and productId to the API service
+    this.router.navigate(['/products/detail', tiendaId, productId]);
+  }
+
+
+ // products.component.ts
+
+ onClickProduct(idTienda: string, productId: string): void {
+  console.log('Hacer algo con idTienda y productId:', idTienda, productId);
+
+  // Redirige al componente de detalle con los parámetros en la URL
+  this.router.navigate(['/detail', idTienda, productId]);
+}
+
+
+
+
+
 
 
 

@@ -1,7 +1,7 @@
 // product.model.ts
 export interface Product {
   id_tienda: string;
-  id: string;
+    ID: string;
     post_title: string;
     sku: string;
     price: number;

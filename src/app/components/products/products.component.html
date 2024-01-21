@@ -390,7 +390,7 @@
 
       <div class="px-4 pb-3">
         <div>
-          <a *ngIf="product.stock !== 'outofstock'" (click)="addToCart(product)">
+          <a *ngIf="product.stock !== 'outofstock'" (click)="product.ID && onClickProduct(product.id_tienda, product.ID)">
             <h5 class="font-semibold tracking-tight hover:text-violet-800 dark:hover:text-violet-300 text-gray-900 dark:text-white text-sm">
               {{ product.post_title }}
             </h5>
