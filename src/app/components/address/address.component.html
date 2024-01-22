@@ -12,7 +12,7 @@
 <app-header-menu></app-header-menu>
 <div class="flex">
 
-  <!-- Contenido de la izquierda (formulario de búsqueda) -->
+
   <div class="w-1/2 p-4 flex justify-center items-center">
     <div class="bg-white py-16 sm:py-24 lg:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -53,7 +53,7 @@
     </div>
   </div>
 
-  <!-- Contenido de la derecha (imagen y direcciones) -->
+
   <div class="w-1/2 p-4">
     <img *ngIf="showImage" src="../../../assets/repartidor2.jpeg" alt="Descripción de la imagen" class="my-8 mx-auto max-w-full" />
 
@@ -65,10 +65,16 @@
                 {{ data.Nombre }}  {{ data.Apellido }}
               </h5>
               <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
-                Direccíon: {{ data.Direccion }}
+                <strong>Dirección:</strong> {{ data.Direccion }}
               </p>
               <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
-                Nit: {{ data.Nit }}
+                <strong>Nit:</strong> {{ data.Nit }}
+              </p>
+              <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
+                <strong>Indicación:</strong> {{ data.Indicacion }}
+              </p>
+              <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
+                <strong>Correo:</strong> {{ data.email }}
               </p>
 
               <br>

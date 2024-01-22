@@ -16,11 +16,13 @@ export class ApiService {
   private apiUrl = 'http://192.168.111.13:3001/api/v1/product/28/86960';
 
   private selectedOptions: any[] = [];
+  private currentProductId: string = '';
   private myList:Address[]=[];
   private combinedData: any;
   private orderData: any = {};
   checkoutClicked = false;
   mostrarComentario = false;
+
   private tiendaId: string = '';
 
 
@@ -58,7 +60,9 @@ export class ApiService {
 
 
 
-
+  setCurrentProductId(productId: string): void {
+    this.currentProductId = productId;
+  }
 
 
 
@@ -162,7 +166,7 @@ export class ApiService {
 
 
 
-  sendOrderData(selectedOptions: any[]): void {
+  sendOrderData(currentProductId: string, selectedOptions: any[]): void {
     if (this.myList.length === 0 || this.myList1.length === 0) {
       console.error('No hay datos del cliente o del producto. Agrega esta información antes de enviar el pedido.');
       return;
@@ -177,14 +181,14 @@ export class ApiService {
         nombre: product.post_title,
         sku: product.sku
       },
-      detalle_producto: JSON.stringify(selectedOptions), // Utiliza las opciones seleccionadas aquí
+      detalle_producto: JSON.stringify(selectedOptions),
       cantidad: product.cantidad,
       precio: product.price
     }));
 
     // Crea objeto para el pedido
     const postData = {
-      pedido: "SM-0000",
+
       fecha_pedido: new Date().toISOString().split('T')[0],
       cliente: {
         nombre: client.Nombre,
@@ -207,7 +211,7 @@ export class ApiService {
       response => console.log('Pedido enviado:', response),
       error => {
         console.error('Ocurrió un error al enviar el pedido:', error);
-        // Puedes agregar lógica adicional para manejar el error, mostrar un mensaje al usuario, etc.
+
       }
     );
   }
@@ -243,6 +247,8 @@ getDetailProducts(idTienda: string, productId: string): Observable<any> {
 
   return this.http.get(apiUrldata);
 }
+
+
 
 
 

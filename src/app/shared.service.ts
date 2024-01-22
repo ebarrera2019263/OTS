@@ -1,14 +1,12 @@
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
 export class SharedService {
   selectedOptions: any[] = [];
+  currentProductId: string = '';
 
   constructor() { }
 
-  guardarDetalle(options: any[]): void {
+  guardarDetalle(productId: string, options: any[]): void {
+    this.currentProductId = productId;
     this.selectedOptions = options;
   }
 }
+

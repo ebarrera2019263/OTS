@@ -33,7 +33,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
 import { ProductsCategoriesComponent } from './component/products-categories/products-categories.component';
 import { DetailProductsComponent } from './components/detail-products/detail-products.component';
-
+import { SharedService } from './shared.service';
 
 
 
@@ -66,15 +66,15 @@ import { DetailProductsComponent } from './components/detail-products/detail-pro
     HeaderMenuComponent,
     ProductsCategoriesComponent,
     DetailProductsComponent,
-    
-  
-    
-    
-   
-   
 
-    
-    
+
+
+
+
+
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -89,17 +89,20 @@ import { DetailProductsComponent } from './components/detail-products/detail-pro
     BrowserAnimationsModule,
     NoopAnimationsModule,
     NgxPaginationModule
-   
-    
-    
-    
-    
+
+
+
+
+
   ],
   providers: [
+    SharedService,
     {
+
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
+
     }
   ],
   bootstrap: [AppComponent]

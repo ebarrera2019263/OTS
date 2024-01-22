@@ -394,6 +394,9 @@
             <h5 class="font-semibold tracking-tight hover:text-violet-800 dark:hover:text-violet-300 text-gray-900 dark:text-white text-sm">
               {{ product.post_title }}
             </h5>
+            <h5 class="font-semibold tracking-tight hover:text-violet-800 dark:hover:text-violet-300 text-gray-900 dark:text-white text-sm">
+              sku: {{ product.sku }}
+            </h5>
           </a>
           <a *ngIf="product.stock === 'outofstock'">
             <h5 class="font-semibold tracking-tight text-red-500 text-sm">

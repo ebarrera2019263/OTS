@@ -81,31 +81,34 @@ export class DetailProductsComponent {
 
 
 
-// detail-products.component.ts
-guardarYMostrar(): void {
-  // Limpiar el array antes de agregar nuevas selecciones
-  this.selectedOptions = [];
 
-  for (let j = 0; j < this.checkboxState.length; j++) {
-    const selectedProduct = this.Presentations[j].name;
+  guardarYMostrar(): void {
+    // Limpiar el array antes de agregar nuevas selecciones
+    this.selectedOptions = [];
 
-    for (let i = 0; i < this.checkboxState[j].length; i++) {
-      if (this.checkboxState[j][i]) {
-        // Agregar cada opción seleccionada al array
-        this.selectedOptions.push({
-          productName: selectedProduct,
-          optionName: this.Presentations[j].presentation[i].name
-        });
+    for (let j = 0; j < this.checkboxState.length; j++) {
+      const selectedProduct = this.Presentations[j].name;
+
+      for (let i = 0; i < this.checkboxState[j].length; i++) {
+        if (this.checkboxState[j][i]) {
+          // Agregar cada opción seleccionada al array
+          this.selectedOptions.push({
+            productName: selectedProduct,
+            optionName: this.Presentations[j].presentation[i].name
+          });
+        }
       }
     }
+
+    // Obtener el ID del producto actual
+    const productId = this.productId;
+
+    // Guardar las opciones seleccionadas y el ID del producto actual
+    this.SharedService.guardarDetalle(productId, this.selectedOptions);
+
+    // Navegar a la página del carrito
+    this.router.navigate(['/products']);
   }
-
-  // Agregar las opciones seleccionadas al servicio compartido
-  this.SharedService.selectedOptions = this.selectedOptions;
-
-  // Navegar a la página del carrito
-  this.router.navigate(['/products']);
-}
 
 
 
