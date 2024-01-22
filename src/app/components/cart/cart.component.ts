@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 import { ApiService } from 'src/app/services/api.service';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-cart',
@@ -19,7 +20,7 @@ export class CartComponent implements OnInit {
    mostrarBotonPedido: boolean = true;
 
 
-  constructor(public productService: ApiService, private router: Router) {}
+  constructor(private sharedService: SharedService, public productService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.calculateSubtotal();
@@ -70,9 +71,11 @@ export class CartComponent implements OnInit {
     // Implement the logic to update the cart
   }
 
+
+
   checkout() {
-    this.productService.sendOrderData();
-    this.router.navigate(['/order']);
+    // Obtén las opciones seleccionadas del servicio compartido (ajusta esto según tu lógica)
+
   }
 
 

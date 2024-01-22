@@ -15,7 +15,7 @@ export class ApiService {
   private postUrl = 'https://webtrack.sanmartinbakery.com/api/store-pedido';
   private apiUrl = 'http://192.168.111.13:3001/api/v1/product/28/86960';
 
-
+  private selectedOptions: any[] = [];
   private myList:Address[]=[];
   private combinedData: any;
   private orderData: any = {};
@@ -93,7 +93,14 @@ export class ApiService {
     );
   }
 
+  setSelectedOptions(options: any[]): void {
+    this.selectedOptions = options;
+  }
 
+  // Función para obtener las opciones seleccionadas
+  getSelectedOptions(): any[] {
+    return this.selectedOptions;
+  }
 
 
 
@@ -155,7 +162,7 @@ export class ApiService {
 
 
 
-  sendOrderData() {
+  sendOrderData(selectedOptions: any[]): void {
     if (this.myList.length === 0 || this.myList1.length === 0) {
       console.error('No hay datos del cliente o del producto. Agrega esta información antes de enviar el pedido.');
       return;
@@ -169,16 +176,11 @@ export class ApiService {
       producto: {
         nombre: product.post_title,
         sku: product.sku
-
       },
-      detalle_producto: "Detalle del producto",
+      detalle_producto: JSON.stringify(selectedOptions), // Utiliza las opciones seleccionadas aquí
       cantidad: product.cantidad,
       precio: product.price
     }));
-
-
-
-
 
     // Crea objeto para el pedido
     const postData = {
@@ -209,6 +211,7 @@ export class ApiService {
       }
     );
   }
+
 
 
 

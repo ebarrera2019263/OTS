@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product.model';
 import { ApiService } from 'src/app/services/api.service';
+import { SharedService } from 'src/app/shared.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private ApiService : ApiService,
      private router: Router,
-     private toastr: ToastrService) { }
+     private toastr: ToastrService, private sharedService: SharedService ) { }
 
   ngOnInit(): void {
   }
@@ -68,10 +69,22 @@ export class CheckoutComponent implements OnInit {
   }
 
 
-  checkout() {
-    this.ApiService.sendOrderData();
+ // checkout.component.ts
 
+ checkout() {
+  // Obtener las opciones seleccionadas del servicio compartido
+  const selectedOptions = this.sharedService.selectedOptions;
+
+  // Verificar si hay opciones seleccionadas antes de llamar a sendOrderData
+  if (selectedOptions && selectedOptions.length > 0) {
+    this.ApiService.sendOrderData(selectedOptions);
+  } else {
+    // Puedes manejar el caso en que no hay opciones seleccionadas, por ejemplo, mostrando un mensaje al usuario.
+    console.error('No hay opciones seleccionadas.');
   }
+}
+
+
 
 
   calculateSubtotal() {

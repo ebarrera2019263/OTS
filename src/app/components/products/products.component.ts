@@ -189,6 +189,11 @@ export class ProductsComponent implements OnInit {
   this.router.navigate(['/detail', idTienda, productId]);
 }
 
+onProductClick(product: Product): void {
+  this.addToCart(product); // Llama a la función para agregar al carrito
+  this.onClickProduct(product.id_tienda, product.ID); // Llama a la función para redirigir al detalle
+}
+
 
 
 

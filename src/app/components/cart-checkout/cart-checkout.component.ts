@@ -10,22 +10,19 @@ import { Product } from 'src/app/models/product.model';
 })
 export class CartCheckoutComponent implements OnInit {
 
-  
-  
+
+
 myCart$ = this.productService.myCart$;
 subtotal: number = 0;
 
 constructor(public productService: ApiService, private router: Router) {}
 
   ngOnInit() {
-    
+
   }
 
 
-  checkout() {
-    this.productService.sendOrderData();
-    this.router.navigate(['/order']);
-  }
+
 
   returnCart() {
     this.router.navigate(['/products']);
@@ -34,7 +31,7 @@ constructor(public productService: ApiService, private router: Router) {}
 
   onCheckoutClick() {
     // Realizar otras acciones relacionadas con el checkout si es necesario
-   
+
     this.router.navigate(['/checkout']);
   }
 

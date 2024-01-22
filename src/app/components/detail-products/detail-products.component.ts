@@ -1,3 +1,4 @@
+import { SharedService } from 'src/app/shared.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetProducts } from 'src/app/models/products.model';
@@ -15,12 +16,13 @@ export class DetailProductsComponent {
   idTienda!: string;
 
   products: GetProducts[] = [];
+  selectedOptions: any[] = [];
   selectedProducts: any[] = [];
 
   stock: ProductStock[] = [];
   body: Body  [] = [];
 
-  constructor(private apiservice: ApiService,  private router: Router, private route: ActivatedRoute) { }
+  constructor(private SharedService: SharedService,private apiservice: ApiService,  private router: Router, private route: ActivatedRoute) { }
 
   public productData: any;
   public productDataImg: any;
@@ -57,7 +59,7 @@ export class DetailProductsComponent {
         this.presentationname = this.Presentations[0].name;
 
         this.Price = data.body.prices;
-        this.productPrice = this.Price[0].price;
+        this.productPrice = this.Price[0].pirce;
 
         // Inicializa this.checkboxState según la cantidad de presentaciones y productos
         this.checkboxState = Array.from({ length: this.Presentations.length }, () =>
@@ -79,33 +81,18 @@ export class DetailProductsComponent {
 
 
 
+// detail-products.component.ts
 guardarYMostrar(): void {
+  // Limpiar el array antes de agregar nuevas selecciones
+  this.selectedOptions = [];
 
-
-
-  // Filtra las opciones seleccionadas
-  const selectedOptions: any[] = [];
-  const productName = this.productData;
-
-
-  console.log('Datos de los Checkboxes seleccionados:');
-  console.log(selectedOptions);
-  this.router.navigate(['/cart']);// Definir productName fuera del bucle interno
-
-  // Agregar el productName solo si hay opciones seleccionadas
-  if (this.checkboxState.some(row => row.some(checked => checked))) {
-    selectedOptions.push({
-      optionName: 'Opciones ', // Puedes ajustar el nombre según tus necesidades
-      productName: productName
-    });
-  }
   for (let j = 0; j < this.checkboxState.length; j++) {
     const selectedProduct = this.Presentations[j].name;
 
     for (let i = 0; i < this.checkboxState[j].length; i++) {
       if (this.checkboxState[j][i]) {
         // Agregar cada opción seleccionada al array
-        selectedOptions.push({
+        this.selectedOptions.push({
           productName: selectedProduct,
           optionName: this.Presentations[j].presentation[i].name
         });
@@ -113,18 +100,17 @@ guardarYMostrar(): void {
     }
   }
 
-  // Guarda las opciones seleccionadas en el carrito
+  // Agregar las opciones seleccionadas al servicio compartido
+  this.SharedService.selectedOptions = this.selectedOptions;
 
-
-  // Muestra las opciones seleccionadas, los nombres de los productos y otros datos relevantes
-  console.log('Datos de los Checkboxes seleccionados:');
-  console.log(selectedOptions);
-
-
-
- // this.router.navigate(['/cart']);
-  // Resto del código...
+  // Navegar a la página del carrito
+  this.router.navigate(['/products']);
 }
+
+
+
+
+
 
 
 
